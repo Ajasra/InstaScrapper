@@ -12,7 +12,7 @@ data = DataFrame()
 for curfile in files:
     temp = pd.read_csv(curfile)
     try:
-        tmp = temp[['shortcode','edge_media_preview_comment.count','edge_media_preview_like.count']]
+        tmp = temp[['shortcode','edge_media_preview_comment.count','edge_media_preview_like.count', 'edge_media_to_caption.edges']]
         data = pd.concat([data, tmp])
     except:
         print('empty')

@@ -9,17 +9,17 @@ import pandas as pd, numpy as np
 import glob
 
 # dirrectory where to save files with info
-directory_path = '../_results_files'
+directory_path = '_results_files'
 # path to chrome driver
 browser = webdriver.Chrome('C:/chromedriver.exe')
 links = []
 
 # how many pages scrap
-n_pages = 200
+n_pages = 2
 # hashtag / user
 mode = 'hashtag'
 # list of hashtags / usernames
-name_list = ['selfiestick','selfiequeen', 'selfiegram']
+name_list = ['selfiestick']
 # , 'selfiestick', 'selfiequeen'
 # save info each ... (in case of bad connection orsome error during scrapping better do not wait till last / 
 # also easier to stop script if you want without loosing all data)
@@ -36,7 +36,8 @@ def scrollPage(n_pages = 1):
     data=bs(source, 'html.parser')
     body = data.find('body')
     script = body.find('span')
-    for link in script.findAll('a'):
+    for link in body.findAll('a'):
+        #print(link)
         if re.match("/p", link.get('href')):
             links.append('https://www.instagram.com'+link.get('href'))
 

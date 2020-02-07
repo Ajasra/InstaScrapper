@@ -3,7 +3,7 @@ import numpy as np
 import pandas as pd
 from pandas import Series, DataFrame
  
-directory_path = '../_results_files'
+directory_path = '_results_files'
 files = glob.glob(directory_path + '/**/*', recursive=True)
 save_to = 'shortcodes.csv'
 

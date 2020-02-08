@@ -15,11 +15,12 @@ browser = webdriver.Chrome('C:/chromedriver.exe')
 links = []
 
 # how many pages scrap
-n_pages = 2
+n_pages = 100
 # hashtag / user
 mode = 'hashtag'
 # list of hashtags / usernames
-name_list = ['selfiestick']
+name_list = ['2019ncov', 'coronavirusoutbreak','coronavirusnews', 'chinavirus', 'ncov', 'ncov2019' ]
+#name_list = ['liwenliang']
 # , 'selfiestick', 'selfiequeen'
 # save info each ... (in case of bad connection orsome error during scrapping better do not wait till last / 
 # also easier to stop script if you want without loosing all data)
@@ -51,7 +52,7 @@ def scrollPage(n_pages = 1):
             data=bs(source, 'html.parser')
             body = data.find('body')
             script = body.find('span')
-            for link in script.findAll('a'):
+            for link in body.findAll('a'):
                 if re.match("/p", link.get('href')):
                     links.append('https://www.instagram.com'+link.get('href'))
             

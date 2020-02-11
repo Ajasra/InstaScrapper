@@ -11,15 +11,17 @@ import glob
 # dirrectory where to save files with info
 directory_path = '_results_files'
 # path to chrome driver
-browser = webdriver.Chrome('C:/chromedriver.exe')
+browser = webdriver.Chrome('/Users/vasily/Documents/00_PYTHON/InstaScrapper/chromedriver')
 links = []
 
+# print(len(links))
+
 # how many pages scrap
-n_pages = 100
+n_pages = 200
 # hashtag / user
 mode = 'hashtag'
 # list of hashtags / usernames
-name_list = ['2019ncov', 'coronavirusoutbreak','coronavirusnews', 'chinavirus', 'ncov', 'ncov2019' ]
+name_list = ['tattoodesign']
 #name_list = ['liwenliang']
 # , 'selfiestick', 'selfiequeen'
 # save info each ... (in case of bad connection orsome error during scrapping better do not wait till last / 
@@ -136,6 +138,8 @@ def instaScrapper( name_list, n_pages, mode = 'hashtag', save_after=100):
             browser.get('https://www.instagram.com/'+username+'/?hl=en')
 
             scrollPage(n_pages)
+
+            print(len(links))
             getInfo(links, name, save_after)
 
 

@@ -17,7 +17,7 @@ for curfile in files:
         for i in range(len(temp)):
                 if(temp['is_video'][i] == False):
                         try:
-                                filename = "{}\{}.jpg".format(directory, temp['shortcode'][i])
+                                filename = "{}/{}.jpg".format(directory, temp['shortcode'][i])
                                 print(filename)
                                 if not os.path.isfile(filename):
                                         urllib.request.urlretrieve(temp['display_url'][i],  filename)

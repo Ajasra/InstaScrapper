@@ -6,10 +6,10 @@ import pandas as pd
 from pandas import Series, DataFrame
 import glob
 
-directory_path = '../_results_files'
+directory_path = '_results_files'
 files = glob.glob(directory_path + '/**/*.csv', recursive=True)
 
-directory="../_scrapped"
+directory="_scrapped"
 for curfile in files:
         print('READING          {}'.format(curfile))
         temp = pd.read_csv(curfile)
@@ -17,7 +17,7 @@ for curfile in files:
         for i in range(len(temp)):
                 if(temp['is_video'][i] == False):
                         try:
-                                filename = "{}\{}.jpg".format(directory, temp['shortcode'][i])
+                                filename = "{}/{}.jpg".format(directory, temp['shortcode'][i])
                                 print(filename)
                                 if not os.path.isfile(filename):
                                         urllib.request.urlretrieve(temp['display_url'][i],  filename)
